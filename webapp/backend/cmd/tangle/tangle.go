@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/analogj/go-util/utils/webapp/backend/pkg/errors"
 
 	log "github.com/sirupsen/logrus"
 	"os"
@@ -21,6 +22,14 @@ func main() {
 	config, err := config.Create()
 	if err != nil {
 		fmt.Printf("FATAL: %+v\n", err)
+		os.Exit(1)
+	}
+
+	//we're going to load the config file manually, since we need to validate it.
+	err = config.ReadConfig("/scrutiny/config/scrutiny.yaml") // Find and read the config file
+	if _, ok := err.(errors.ConfigFileMissingError); ok {     // Handle errors reading the config file
+		//ignore "could not find config file"
+	} else if err != nil {
 		os.Exit(1)
 	}
 
@@ -64,7 +73,7 @@ func main() {
 		Commands: []*cli.Command{
 			{
 				Name:  "start",
-				Usage: "Start the scrutiny server",
+				Usage: "Start the tangle server",
 				Action: func(c *cli.Context) error {
 					fmt.Fprintln(c.App.Writer, c.Command.Usage)
 					if c.IsSet("config") {
@@ -98,13 +107,13 @@ func main() {
 						Name:    "log-file",
 						Usage:   "Path to file for logging. Leave empty to use STDOUT",
 						Value:   "",
-						EnvVars: []string{"SCRUTINY_LOG_FILE"},
+						EnvVars: []string{"TANGLE_LOG_FILE"},
 					},
 
 					&cli.BoolFlag{
 						Name:    "debug",
 						Usage:   "Enable debug logging",
-						EnvVars: []string{"SCRUTINY_DEBUG", "DEBUG"},
+						EnvVars: []string{"TANGLE_DEBUG", "DEBUG"},
 					},
 				},
 			},
