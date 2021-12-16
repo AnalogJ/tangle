@@ -31,11 +31,13 @@ func (c *configuration) Init() error {
 	c.SetDefault("web.listen.host", "0.0.0.0")
 	c.SetDefault("web.src.frontend.path", "/tangle/web")
 	c.SetDefault("web.database.location", "/tangle/config/tangle.db")
+	c.SetDefault("web.database.uri", "neo4j://localhost:7687")
+	c.SetDefault("web.database.username", "")
+	c.SetDefault("web.database.password", "")
+	c.SetDefault("web.database.realm", "")
 
 	c.SetDefault("log.level", "INFO")
 	c.SetDefault("log.file", "")
-
-	c.SetDefault("notify.urls", []string{})
 
 	//if you want to load a non-standard location system config file (~/drawbridge.yml), use ReadConfig
 	c.SetConfigType("yaml")
