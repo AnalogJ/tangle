@@ -5,7 +5,6 @@ import (
 	"github.com/analogj/go-util/utils"
 	"github.com/analogj/tangle/webapp/backend/pkg/config"
 	"github.com/analogj/tangle/webapp/backend/pkg/errors"
-	"github.com/analogj/tangle/webapp/backend/pkg/web/handler"
 	"github.com/analogj/tangle/webapp/backend/pkg/web/middleware"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -34,13 +33,13 @@ func (ae *AppEngine) Setup(logger logrus.FieldLogger) *gin.Engine {
 				"success": true,
 			})
 		})
-		api.POST("/health/notify", handler.SendTestNotification) //check if notifications are configured correctly
-
-		api.POST("/devices/register", handler.RegisterDevices)      //used by Collector to register new devices and retrieve filtered list
-		api.GET("/summary", handler.GetDevicesSummary)              //used by Dashboard
-		api.POST("/device/:wwn/smart", handler.UploadDeviceMetrics) //used by Collector to upload data
-		api.POST("/device/:wwn/selftest", handler.UploadDeviceSelfTests)
-		api.GET("/device/:wwn/details", handler.GetDeviceDetails) //used by Details
+		//api.POST("/health/notify", handler.SendTestNotification) //check if notifications are configured correctly
+		//
+		//api.POST("/devices/register", handler.RegisterDevices)      //used by Collector to register new devices and retrieve filtered list
+		//api.GET("/summary", handler.GetDevicesSummary)              //used by Dashboard
+		//api.POST("/device/:wwn/smart", handler.UploadDeviceMetrics) //used by Collector to upload data
+		//api.POST("/device/:wwn/selftest", handler.UploadDeviceSelfTests)
+		//api.GET("/device/:wwn/details", handler.GetDeviceDetails) //used by Details
 	}
 
 	//Static request routing
