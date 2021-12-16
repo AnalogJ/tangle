@@ -26,8 +26,8 @@ func main() {
 	}
 
 	//we're going to load the config file manually, since we need to validate it.
-	err = config.ReadConfig("/scrutiny/config/scrutiny.yaml") // Find and read the config file
-	if _, ok := err.(errors.ConfigFileMissingError); ok {     // Handle errors reading the config file
+	err = config.ReadConfig("tangle.yaml")                // Find and read the config file
+	if _, ok := err.(errors.ConfigFileMissingError); ok { // Handle errors reading the config file
 		//ignore "could not find config file"
 	} else if err != nil {
 		os.Exit(1)
@@ -46,7 +46,7 @@ func main() {
 		},
 		Before: func(c *cli.Context) error {
 
-			scrutiny := "github.com/AnalogJ/tangle"
+			tangle := "github.com/AnalogJ/tangle"
 
 			var versionInfo string
 			if len(goos) > 0 && len(goarch) > 0 {
@@ -55,7 +55,7 @@ func main() {
 				versionInfo = fmt.Sprintf("dev-%s", version.VERSION)
 			}
 
-			subtitle := scrutiny + utils.LeftPad2Len(versionInfo, " ", 65-len(scrutiny))
+			subtitle := tangle + utils.LeftPad2Len(versionInfo, " ", 65-len(tangle))
 
 			color.New(color.FgGreen).Fprintf(c.App.Writer, fmt.Sprintf(utils.StripIndent(
 				`

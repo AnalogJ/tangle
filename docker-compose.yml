@@ -7,10 +7,14 @@ services:
     ports:
       - "7474:7474"
       - "7687:7687"
-    depends_on:
-      - kafka
     volumes:
       - ./neo4j/plugins:/plugins
     environment:
       NEO4J_AUTH: neo4j/streams
       NEO4J_dbms_logs_debug_level: DEBUG
+
+  tangle:
+    build: .
+    hostname: tangle
+    ports:
+      - "8080:8080"

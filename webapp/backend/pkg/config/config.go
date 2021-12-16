@@ -29,8 +29,8 @@ func (c *configuration) Init() error {
 	//set defaults
 	c.SetDefault("web.listen.port", "8080")
 	c.SetDefault("web.listen.host", "0.0.0.0")
-	c.SetDefault("web.src.frontend.path", "/scrutiny/web")
-	c.SetDefault("web.database.location", "/scrutiny/config/scrutiny.db")
+	c.SetDefault("web.src.frontend.path", "/tangle/web")
+	c.SetDefault("web.database.location", "/tangle/config/tangle.db")
 
 	c.SetDefault("log.level", "INFO")
 	c.SetDefault("log.file", "")

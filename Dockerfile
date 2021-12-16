@@ -13,5 +13,5 @@ FROM gcr.io/distroless/static-debian11 as runtime
 EXPOSE 8080
 
 COPY --from=backendbuild /go/src/github.com/analogj/tangle/tangle /tangle
-#COPY --from=frontendbuild /scrutiny/dist /scrutiny/web
+#COPY --from=frontendbuild /tangle/dist /tangle/web
 CMD ["/tangle", "start"]
