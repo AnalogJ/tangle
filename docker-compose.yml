@@ -5,12 +5,14 @@ services:
     hostname: neo4j
     container_name: neo4j
     ports:
+      # webui
       - "7474:7474"
+      # api
       - "7687:7687"
     volumes:
       - ./neo4j/plugins:/plugins
     environment:
-      NEO4J_AUTH: neo4j/streams
+      NEO4J_AUTH: neo4j/neo4j
       NEO4J_dbms_logs_debug_level: DEBUG
 
   tangle:
