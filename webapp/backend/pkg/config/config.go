@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/analogj/go-util/utils"
+	utils "github.com/analogj/go-util/utils"
 	"github.com/analogj/tangle/webapp/backend/pkg/errors"
 	"github.com/spf13/viper"
 	"log"

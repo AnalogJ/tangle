@@ -2,7 +2,7 @@ package web
 
 import (
 	"fmt"
-	"github.com/analogj/go-util/utils"
+	utils "github.com/analogj/go-util/utils"
 	"github.com/analogj/tangle/webapp/backend/pkg/config"
 	"github.com/analogj/tangle/webapp/backend/pkg/errors"
 	"github.com/analogj/tangle/webapp/backend/pkg/web/middleware"
